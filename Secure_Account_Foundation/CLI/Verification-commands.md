@@ -1,11 +1,11 @@
 
 Validations CLI Commands 
 
-- $ aws iam get-account-summary --query 'SummaryMap.AccountMFAEnabled'
+$ aws iam get-account-summary --query 'SummaryMap.AccountMFAEnabled'
 1
-~ $ 
-~ $ # Trail exists and is logging?
-~ $ aws cloudtrail describe-trails
+$ 
+$ # Trail exists and is logging?
+$ aws cloudtrail describe-trails
 {
     "trailList": [
         {
@@ -23,7 +23,7 @@ Validations CLI Commands
         }
     ]
 }
-~ $ aws cloudtrail get-trail-status --name org-account-trail --query 'IsLogging'
+$ aws cloudtrail get-trail-status --name org-account-trail --query 'IsLogging'
 true
 
 aws budgets describe-budgets --account-id 
