@@ -4,7 +4,7 @@ Support-Tester User attempted to create a S3 Bucket in US-EAST-2.
 
 ## Investigations: 
 
-Reviewed the cloud trail log September 23, 2026, 14:43:34 (UTC-07:00)and found error "User: arn:aws:sts::153585581852:assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::patsdemoerro\" because no identity-based policy allows the s3:CreateBucket action". Led me to investigate Users group and permission policy set. 
+Reviewed the cloud trail log September 23, 2026, 14:43:34 (UTC-07:00)and found error "User: arn:aws:sts:::assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::patsdemoerro\" because no identity-based policy allows the s3:CreateBucket action". Led me to investigate Users group and permission policy set. 
 ## Root Cause: 
 
 The Support-tester user is not able to create S3 Buckets in the AWS infrastructure due to security policy. 
@@ -56,15 +56,15 @@ JSON view
     "userIdentity": {
         "type": "AssumedRole",
         "principalId": "AROASHQTJ74OJOHCZ4CXO:Support-tester",
-        "arn": "arn:aws:sts::153585581852:assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester",
-        "accountId": "153585581852",
+        "arn": "arn:aws:sts:::assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester",
+        "accountId": "",
         "accessKeyId": "ASIASHQTJ74OLNV475R5",
         "sessionContext": {
             "sessionIssuer": {
                 "type": "Role",
                 "principalId": "AROASHQTJ74OJOHCZ4CXO",
-                "arn": "arn:aws:iam::153585581852:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d",
-                "accountId": "153585581852",
+                "arn": "arn:aws:iam:::role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d",
+                "accountId": "",
                 "userName": "AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d"
             },
             "attributes": {
@@ -74,7 +74,7 @@ JSON view
         },
         "onBehalfOf": {
             "userId": "c46854f8-4001-7080-57c9-f74de5be582b",
-            "identityStoreArn": "arn:aws:identitystore::153585581852:identitystore/d-90667e1d76"
+            "identityStoreArn": "arn:aws:identitystore:::identitystore/d-90667e1d76"
         }
     },
     "eventTime": "2026-09-23T21:43:34Z",
@@ -84,7 +84,7 @@ JSON view
     "sourceIPAddress": "70.170.150.0",
     "userAgent": "[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36]",
     "errorCode": "AccessDenied",
-    "errorMessage": "User: arn:aws:sts::153585581852:assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::patsdemoerro\" because no identity-based policy allows the s3:CreateBucket action",
+    "errorMessage": "User: arn:aws:sts:::assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::patsdemoerro\" because no identity-based policy allows the s3:CreateBucket action",
     "requestParameters": {
         "CreateBucketConfiguration": {
             "LocationConstraint": "us-east-2",
@@ -111,7 +111,7 @@ JSON view
     "readOnly": false,
     "eventType": "AwsApiCall",
     "managementEvent": true,
-    "recipientAccountId": "153585581852",
+    "recipientAccountId": "",
     "eventCategory": "Management",
     "tlsDetails": {
         "tlsVersion": "TLSv1.3",
