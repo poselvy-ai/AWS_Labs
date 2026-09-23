@@ -3,4 +3,7 @@ The following labs demonstrate my understanding of the AWS infrastructure and my
 
 As I progress through each lab I will explain why I created the lab, build the architecture  design in Draw.io, provide screenshots of the logs and routes, use verification commands through the AWS CLI, and start using IaC as I progress. 
 
+>[!NOTE]
+>Used Claude AI to assist in developing scenarios and to act as a the Senior Cloud Engineer for the labs. 
+
 ## Labs
