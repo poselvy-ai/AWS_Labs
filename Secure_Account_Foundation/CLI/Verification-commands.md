@@ -1,7 +1,7 @@
 
-Validations CLI Commands 
+#Validations CLI Commands 
 
-$ aws iam get-account-summary --query 'SummaryMap.AccountMFAEnabled'
+"$ aws iam get-account-summary --query 'SummaryMap.AccountMFAEnabled'
 1
 $ 
 $ # Trail exists and is logging?
@@ -10,11 +10,11 @@ $ aws cloudtrail describe-trails
     "trailList": [
         {
             "Name": "org-account-trail",
-            "S3BucketName": "aws-cloudtrail-logs-153585581852-343b0fa8",
+            "S3BucketName": "aws-cloudtrail-logs-",
             "IncludeGlobalServiceEvents": true,
             "IsMultiRegionTrail": true,
             "HomeRegion": "us-east-1",
-            "TrailARN": "arn:aws:cloudtrail:us-east-1:153585581852:trail/org-account-trail",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1::trail/org-account-trail",
             "LogFileValidationEnabled": true,
             "HasCustomEventSelectors": true,
             "HasInsightSelectors": false,
@@ -64,4 +64,4 @@ aws budgets describe-budgets --account-id
                     "Amount": "0.0",
                     "Unit": "USD"
                 },
-:
+:"
