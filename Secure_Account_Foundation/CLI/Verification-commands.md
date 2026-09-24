@@ -84,5 +84,3 @@ $ for ps in $(aws sso-admin list-permission-sets --instance-arn "$INSTANCE_ARN" 
 |  AdministratorAccess |  PT1H     |
 +----------------------+-----------+
 ```
-|  AdministratorAccess |  PT1H     |
-+----------------------+-----------+
