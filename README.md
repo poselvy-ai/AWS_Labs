@@ -7,3 +7,6 @@ As I progress through each lab I will explain why I created the lab, build the a
 >Used Claude AI to assist in developing scenarios and to act as a the Senior Cloud Engineer for the labs. 
 
 ## Labs
+| # | Lab | Focus Areas | Status | 
+|---|-----|-------------|--------|
+| 1 | [Secure Account Foundation] | IAM, MFA, CloudTrail, Budget | In Progress |
