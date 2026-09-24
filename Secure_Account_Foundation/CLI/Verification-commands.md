@@ -3,7 +3,7 @@
 I used AWS Cloud Shell to perform a series of commands to ensure my configuration were implemented. 
 
 ## 1. Confirmed my PSelvy account assumed the role as the ***Administrator*** with the appropriate privileges through the IAM Identity Center. 
-'''bash
+```bash
 aws sts get-caller-identity --query Arn --output text
 ```
 **Output**
