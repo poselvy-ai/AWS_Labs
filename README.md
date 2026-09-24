@@ -9,4 +9,4 @@ As I progress through each lab I will explain why I created the lab, build the a
 ## Labs
 | # | Lab | Focus Areas | Status | 
 |---|-----|-------------|--------|
-| 1 | [Secure Account Foundation] | IAM, MFA, CloudTrail, Budget | In Progress |
+| 1 | [Secure Account Foundation](/01_Lab_Secure_Foundation.md) | IAM, MFA, CloudTrail, Budget | In Progress |
