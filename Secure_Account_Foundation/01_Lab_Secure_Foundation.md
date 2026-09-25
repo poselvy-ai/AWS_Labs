@@ -55,7 +55,7 @@ The guardrail was put to ensure as I went through my labs I am appropriate budge
 ### Verification.
 Please navigate to [Verification](./CLI/Verification-commands.md) where I used the AWS CloudShell to verify my work. 
 
-### [Ticket Scenario](./Secure_Account_Foundation/Trouble_Ticket_Scenerio.md)
+### [Ticket Scenario](./Trouble_Ticket_Scenerio.md)
 - Developed the following scenario to practice troubleshooting IAM Identity Center, using AWS CloudTrail, and communicating with a customer. 
 Tester attempts to create and was denied access.
 
