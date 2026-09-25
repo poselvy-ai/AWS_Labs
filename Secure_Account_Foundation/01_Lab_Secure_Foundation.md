@@ -35,7 +35,7 @@ I created the 'AdministratorAccess' and 'ReadOnlyAccess" permission sets in the 
 
 ![Permission Set](./Screenshots/Permission-Set-Page.png)
 
-By assigning the appropriate users to the correct group I followed the security principle of **Leased Privilege**, as not every on needs the same permission to conduct their roles. 
+By assigning the appropriate users to the correct group I followed the security principle of **Leased Privilege**, as not everyone needs the same permission to conduct their roles. 
 
 Portal Screenshots for each user validating permission assigned by IAM Identity Center
 
