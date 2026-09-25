@@ -53,7 +53,7 @@ The guardrail was put to ensure as I went through my labs I am appropriate budge
 ![Cost Guardrail](./Screenshots/Cost-Gaurdrails.png)
 
 ### Verification.
-Please navigate to [Verification](Verification-commands.md) where I used the AWS CloudShell to verify my work. 
+Please navigate to [Verification](./CLI/Verification-commands.md) where I used the AWS CloudShell to verify my work. 
 
 ### Ticket Scenario
 - Developed the following scenario to practice troubleshooting IAM Identity Center, using AWS CloudTrail, and communicating with a customer. 
