@@ -4,14 +4,21 @@ Support-Tester User attempted to create a S3 Bucket in US-EAST-2.
 
 ## Investigations: 
 
-Reviewed the cloud trail log September 23, 2026, 14:43:34 (UTC-07:00)and found error "User: arn:aws:sts:::assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::patsdemoerro\" because no identity-based policy allows the s3:CreateBucket action". Led me to investigate Users group and permission policy set. 
+Reviewed the cloud trail log September 23, 2026, 14:43:34 (UTC-07:00)and found error 
+```bash
+"User: arn:aws:sts:::assumed-role/AWSReservedSSO_ReadOnlyAccess_2c0f05e2ef253c2d/Support-tester is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::patsdemoerro\" because no identity-based policy allows the s3:CreateBucket action".
+```
+Led me to investigate Users group and permission policy set. 
+
 ## Root Cause: 
 
 The Support-tester user is not able to create S3 Buckets in the AWS infrastructure due to security policy. 
+
 ## Resolution: 
 Informed user that due to company security policy that testers are currently restricted to setting up buckets for budgetary and security concerns. As well as they believe the testing group needs this ability to speak with the management to so we can change the access.
 
 ## Logs
+
 CreateBucket Info
 Details Info
 Event time
@@ -51,6 +58,7 @@ Enable AWS Config resource recording
 Event record Info
 Copy
 JSON view
+```JSON
 {
     "eventVersion": "1.11",
     "userIdentity": {
@@ -119,6 +127,6 @@ JSON view
         "clientProvidedHostHeader": "patsdemoerro.s3.us-east-2.amazonaws.com"
     }
 }
-
+```
 
 
