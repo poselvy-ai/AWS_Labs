@@ -15,7 +15,7 @@ Led me to investigate Users group and permission policy set.
 The Support-tester user is not able to create S3 Buckets in the AWS infrastructure due to security policy. 
 
 ## Resolution: 
-Informed user that due to company security policy that testers are currently restricted to setting up buckets for budgetary and security concerns. As well as they believe the testing group needs this ability to speak with the management to so we can change the access.
+Informed user that due to company security policy that testers are currently restricted to setting up buckets for budgetary and security concerns. If they believe the testing group needs this ability to speak with the management to so we can change the access.
 
 ## Logs
 ```text
