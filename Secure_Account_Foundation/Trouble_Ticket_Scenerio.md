@@ -18,7 +18,7 @@ The Support-tester user is not able to create S3 Buckets in the AWS infrastructu
 Informed user that due to company security policy that testers are currently restricted to setting up buckets for budgetary and security concerns. As well as they believe the testing group needs this ability to speak with the management to so we can change the access.
 
 ## Logs
-
+```text
 CreateBucket Info
 Details Info
 Event time
@@ -58,6 +58,7 @@ Enable AWS Config resource recording
 Event record Info
 Copy
 JSON view
+```
 ```JSON
 {
     "eventVersion": "1.11",
