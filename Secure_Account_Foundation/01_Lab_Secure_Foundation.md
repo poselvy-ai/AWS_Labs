@@ -15,6 +15,33 @@ IAM, IAM Identity Center, CloudTrail, AWS CloudShell, AWS Budgets.
 
  ![Governance Diagram](./Diagrams/Goverance-Flow-Chart.png)
 
+## Implementation
+
+### Step 1: Secure root user
+I Enabled MFA on *** ROOT USER*** and confirmed no access keys exist. 
+![IAM Dashboard](./Screenshots/IAM-Dashboard.png)
+I did this because the ***ROOT USER*** has unrestricted access in my AWS organization and can't be limited by IAM policy. Best practices is that the *** ROOT USER *** should not be used for day-to-day use, and be secured to limited number of people in the organization. 
+
+### Step 2: IAM Identity Center (User/Groups)
+I created two groups the 'Admin" & "ReadOnlyUSer', and the 'Pselvy' & 'SupportTester" in the AWS Identity Center. 
+AWS Identity Center issues temporary credential allowing the users to * assume * roles then allowing the user to have long-term IAM user credentials. By doing this it allows for limited usage of these role, and allows for CloudTrail to log the start and end of the sessions. 
+
+### Step 3: Create permission sets and accounts assignments. 
+I created the 'AdministratorAccess' and 'ReadOnlyAccess" permission sets in the IAM Identity Center 'Permission sets'. After the creation of the permissions sets I went to 'AWS Account' chose the the correct account and assigned the permission sets as followed:
+|Permission Set | AWS Group   |
+|---------------|-------------|
+|AdministartorAccess | Admin |
+|ReadOnlyAccess | ReadOnlyUser |
+
+![Permission Set](./Screenshots/Permission-Set-Page.png)
+
+By assigning the appropriate users to the correct group I followed the security principle of *** Lease Privilege ***, as not every on needs the same permission to conduct their roles. 
+
+Portal Screenshots for each user validating permission assigned by IAM Identity Center
+
+![PSelvy Account Portal](./Screenshots/Pselvy-Access-Portal.png)
+![Supportestter Account Portal](./Screenshots/Supportester-Acces-portal.png)
+
 
 
 
