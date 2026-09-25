@@ -1,6 +1,7 @@
 # Ticket
 ## Symptoms: 
 Support-Tester User attempted to create a S3 Bucket in US-EAST-2. 
+![Screenshot of Error](./Screenshots/Error-Screenshot.png)
 
 ## Investigations: 
 
