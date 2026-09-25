@@ -23,7 +23,7 @@ I Enabled MFA on **ROOT USER** and confirmed no access keys exist.
 I did this because the **ROOT USER** has unrestricted access in my AWS organization and can't be limited by IAM policy. Best practices is that the **ROOT USER** should not be used for day-to-day use, and be secured to limited number of people in the organization. 
 
 ### Step 2: IAM Identity Center (User/Groups)
-I created two groups the 'Admin" & "ReadOnlyUSer', and the 'Pselvy' & 'SupportTester" in the AWS Identity Center. 
+I created two groups the 'Admin" & "ReadOnlyUSer'. Also, I created the users 'Pselvy' & 'SupportTester" in the AWS Identity Center. 
 AWS Identity Center issues temporary credential allowing the users to * assume * roles then allowing the user to have long-term IAM user credentials. By doing this it allows for limited usage of these role, and allows for CloudTrail to log the start and end of the sessions. 
 
 ### Step 3: Create permission sets and accounts assignments. 
