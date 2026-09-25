@@ -18,9 +18,9 @@ IAM, IAM Identity Center, CloudTrail, AWS CloudShell, AWS Budgets.
 ## Implementation
 
 ### Step 1: Secure root user
-I Enabled MFA on *** ROOT USER*** and confirmed no access keys exist. 
+I Enabled MFA on ** ROOT USER ** and confirmed no access keys exist. 
 ![IAM Dashboard](./Screenshots/IAM-Dashboard.png)
-I did this because the ***ROOT USER*** has unrestricted access in my AWS organization and can't be limited by IAM policy. Best practices is that the *** ROOT USER *** should not be used for day-to-day use, and be secured to limited number of people in the organization. 
+I did this because the ***ROOT USER*** has unrestricted access in my AWS organization and can't be limited by IAM policy. Best practices is that the ** ROOT USER ** should not be used for day-to-day use, and be secured to limited number of people in the organization. 
 
 ### Step 2: IAM Identity Center (User/Groups)
 I created two groups the 'Admin" & "ReadOnlyUSer', and the 'Pselvy' & 'SupportTester" in the AWS Identity Center. 
