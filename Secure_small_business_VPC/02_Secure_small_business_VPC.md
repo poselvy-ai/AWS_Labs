@@ -10,15 +10,19 @@ Desert Bloom Dental, a small business, needs a public website and a private inte
 4. Implement CloudTrail to support flow logging to troubleshoot.
 
 ## Service Used
-
+EC2, Security Group, CloudWatch, NAT Gateway, Internet Gateway, Session Manager
 >[!Warning]
 >Nat Gateways are billed hourly, as well as the use of public IPv4 address. The implementation of ***Budget*** to provide warning to you is highly suggested for this lab. refer to lab [01_Secure_Accaount_Foundation](Awsl_Labs/Secure_Account_Foundation/01_Lab_Secure_Foundation.md) for instructions. 
 
 ## Architecture
 ![Cloud Architecture](./diagram/Secure_Small_Business_VPC.png)
 
-
-
+|Subnet|CIDER|TYPE|
+|------|------|-------|
+|dbd-public-a| 10.0.1.0/24 | Public |
+|dbd-public-b| 10.0.2.0/24 | Public |
+|dbd-private-a | 10.0.11.0/24 | Private |
+|dbd-private-b | 10.0.12.0/24 | Private |
 
 
 VPC CIDR 10.0.0.0/16 chosen assuming no overlap with on-premises networks; a production design would confirm the client's existing ranges to support future VPN connectivity." It shows you're thinking about hybrid networking, which matches your background.
