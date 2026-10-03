@@ -15,7 +15,7 @@ Desert Bloom Dental, a small business, needs a public website and a private inte
 >Nat Gateways are billed hourly, as well as the use of public IPv4 address. The implementation of ***Budget*** to provide warning to you is highly suggested for this lab. refer to lab [01_Secure_Accaount_Foundation](Awsl_Labs/Secure_Account_Foundation/01_Lab_Secure_Foundation.md) for instructions. 
 
 ## Architecture
-
+![Cloud Architecture](./diagram/Secure_Small_Business_VPC.png)
 
 
 
