@@ -10,4 +10,4 @@ As I progress through each lab I will explain why I created the lab, build the a
 | # | Lab | Focus Areas | Status | 
 |---|-----|-------------|--------|
 | 1 | [Secure Account Foundation](/01_Lab_Secure_Foundation.md) | IAM, MFA, CloudTrail, Budget | Complete |
-| 2 | Secure small-business VPC | VPC, NAT Gateway, EC2, CloudTrail, Budget | 
+| 2 | [Secure small-business VPC](./Secure_small-business_VPC) | VPC, NAT Gateway, EC2, CloudTrail, Budget | In Progress | 
