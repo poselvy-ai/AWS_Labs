@@ -16,6 +16,13 @@ Desert Bloom Dental, a small business, needs a public website and a private inte
 
 ## Architecture
 
+
+
+
+
+
+VPC CIDR 10.0.0.0/16 chosen assuming no overlap with on-premises networks; a production design would confirm the client's existing ranges to support future VPN connectivity." It shows you're thinking about hybrid networking, which matches your background.
+
 ## Implementation
 
 ## Verification
@@ -24,3 +31,5 @@ Please navigate to [Verification where](./CLI/verification-commands.md) I used t
 ## Trouble Ticket Scenario 
 
 ## Lessons Learned
+### Subnetting AWS for VPCs 
+1. Its better to use a /24 on the public VPC Subnets as the your external resources sit their along with the NAT Gateways. Also, some of the AWS resources need a larger subnet as they scale up.
