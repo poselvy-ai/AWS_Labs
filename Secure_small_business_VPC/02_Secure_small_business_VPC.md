@@ -9,5 +9,18 @@ Desert Bloom Dental, a small business, needs a public website and a private inte
 3. Use Private Administration through *Session Manager*
 4. Implement CloudTrail to support flow logging to troubleshoot.
 
+## Service Used
+
 >[!Warning]
 >Nat Gateways are billed hourly, as well as the use of public IPv4 address. The implementation of ***Budget*** to provide warning to you is highly suggested for this lab. refer to lab [01_Secure_Accaount_Foundation](Awsl_Labs/Secure_Account_Foundation/01_Lab_Secure_Foundation.md) for instructions. 
+
+## Architecture
+
+## Implementation
+
+## Verification
+Please navigate to [Verification where](./CLI/verification-commands.md) I used the AWS CloudShell to verify my work.
+
+## Trouble Ticket Scenario 
+
+## Lessons Learned
