@@ -17,6 +17,17 @@ EC2, Security Group, CloudWatch, NAT Gateway, Internet Gateway, Session Manager,
 ## Architecture
 ![Architecture](./diagram/Secure_Small_Business_VPC.png)
 
+### Gateways and Route Tables
+
+| Component | Type | Placement | Routes / Purpose |
+|---|---|---|---|
+| dbd-igw | Internet Gateway | Attached to dbd-vpc | Internet access for public subnets and the NAT Gateway |
+| dbd-nat | Regional NAT Gateway | VPC level (AWS-managed across AZs) | Outbound-only internet for private subnets |
+| dbd-public-rt | Route table | public-a, public-b | 10.0.0.0/16 → local, 0.0.0.0/0 → dbd-igw |
+| dbd-private-rt | Route table | private-a, private-b | 10.0.0.0/16 → local, 0.0.0.0/0 → dbd-nat |
+| dbd-nat-rt | Route table | Edge-associated with dbd-nat | 0.0.0.0/0 → dbd-igw |
+| Main route table | Route table | No associations | 10.0.0.0/16 → local (safe default) |
+
 ### Subnet Table
 | Subnet | CIDR | AZ | Type | Route table | Resources |
 |---|---|---|---|---|---|
