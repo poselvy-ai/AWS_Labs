@@ -12,7 +12,7 @@ Desert Bloom Dental, a small business, needs a public website and a private inte
 ## Service Used
 EC2, Security Group, CloudWatch, NAT Gateway, Internet Gateway, Session Manager, VPC, VPC Flow Logs, IAM, System Manager
 >[!Warning]
->Nat Gateways are billed hourly, as well as the use of public IPv4 address. The implementation of ***Budget*** to provide warning to you is highly suggested for this lab. refer to lab [01_Secure_Account_Foundation](./Secure_Account_Foundation/01_Lab_Secure_Foundation.md) for instructions. 
+>Nat Gateways are billed hourly, as well as the use of public IPv4 address. The implementation of ***Budget*** to provide warning to you is highly suggested for this lab. refer to lab [01_Secure_Account_Foundation](../Secure_Account_Foundation/01_Lab_Secure_Foundation.md) for instructions. 
 
 ## Architecture
 ![Architecture](./diagram/Secure_Small_Business_VPC.png)
