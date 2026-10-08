@@ -45,6 +45,17 @@ EC2, Security Group, CloudWatch, NAT Gateway, Internet Gateway, Session Manager,
 
 **No inbound SSH (22) rules exist.** Administration is through Session Manager.
 
+### Compute
+
+| Instance | Role | Subnet | AMI | Type | Security group | IAM role | Public IP | Software |
+|---|---|---|---|---|---|---|---|---|
+| dbd-web | Public web server | dbd-public-a | Amazon Linux 2023 | t3.micro | dbd-web-sg | dbd-ec2-ssm-role | Yes (auto-assigned) | Apache httpd, port 80 |
+| dbd-app | Internal app server | dbd-private-a | Amazon Linux 2023 | t3.micro | dbd-app-sg | dbd-ec2-ssm-role | No | Apache httpd, port 80 |
+
+- **No key pairs:** neither instance has an SSH key; administration is through Session Manager.
+- **App server note:** dbd-app simulates an internal practice-management application. Apache serving a static page stands in for the real application so the lab can focus on network segmentation and access control.
+- **Bootstrap:** both instances are configured at launch with user data scripts. See [scripts/](scripts/).
+
 
 ## Implementation
 
