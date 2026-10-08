@@ -4,7 +4,7 @@
 
 The following CLI verifies that the route tables are established between internet, region, and az.
 
-``bash
+```bash
 ~ $ aws ec2 describe-route-tables \
 
   --filters Name=vpc-id,Values=vpc-0fff4fd233db6aed7 \
