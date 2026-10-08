@@ -1,7 +1,6 @@
-
 # AWS CLI Verification 
 
-## Route Tabe
+## Route Table
 
 The following CLI verifies that the route tables are established between internet, region, and az.
 
