@@ -129,7 +129,7 @@ The following CLI commands verifies that the projects, subnets, route tables, an
                 "ToPort": 80,
                 "UserIdGroupPairs": [
                     {
-                        "UserId": "153585581852",
+                        "UserId": """",
                         "GroupId": "sg-09ba64186af98a186"
                     }
                 ],
@@ -146,7 +146,7 @@ The following CLI commands verifies that the projects, subnets, route tables, an
                 "IpProtocol": "-1",
                 "UserIdGroupPairs": [
                     {
-                        "UserId": "153585581852",
+                        "UserId": """",
                         "GroupId": "sg-0c6964b26845fede1"
                     }
                 ],
