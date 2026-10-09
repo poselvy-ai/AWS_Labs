@@ -179,5 +179,10 @@ Please navigate to [Verification](./CLI/verification-commands.md) Where I used t
 | 8 | dbd-app launched in a public subnet with a public IP | The wrong subnet was selected in the EC2 launch wizard (dbd-public-b instead of dbd-private-a). Found when flow logs showed outside public IPs reaching 10.0.20.106; confirmed with `describe-instances` and `describe-subnets` (public IP 13.220.210.88). | dbd-app-sg rejected all outside traffic, so nothing was exposed. Documented rather than rebuilt to control cost. The private NAT egress path was **not** tested. Next build: launch private instances in a private subnet, disable auto-assign public IP, and verify placement right after launch. |
 
 ## Lessons Learned
-### Subnetting AWS for VPCs 
-1. It's better to use a /24 on the public subnets as the your external resources sit their along with the NAT Gateways. Also, some of the AWS resources need a larger subnet as they scale up.
+
+| Issue | Lessons Learned | 
+|----|-----|
+|NAT failed with IGW  not attached | The IGW needs to be created prior to the NAT Gateway. If not the AWS will create a public NAT Gatway|
+|dbd-public lost while associating subnets | Subnets only belong to one subnets. Need to verify the subnets association after each router router association.| 
+|Nearly deleted dbd-nat-rt| Verify all association prior to deleting to ensure you didn't miss a tag that CLI query miss.|
+|dbd-app launched in the wrong subnet| Verify instance placement after launch. Route tables, subnets public or private, and auto-assignment places the instance.|
