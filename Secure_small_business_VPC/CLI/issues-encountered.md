@@ -1,0 +1,3 @@
+| Issue | How it was found | Cause | Resolution |
+|---|---|---|---|
+| dbd-app launched in a public subnet with a public IP | Flow logs showed connection attempts from outside public IPs to 10.0.20.106. `describe-instances` and `describe-subnets` confirmed dbd-app was in dbd-public-b (10.0.20.0/24, auto-assign public IP enabled) with public IP 13.220.210.88. | The wrong subnet was selected in the EC2 launch wizard. | dbd-app-sg rejected all outside traffic, so nothing was exposed. Documented rather than rebuilt (cost). The private NAT egress path was not tested. Fix for next build: launch private instances in a private subnet, disable auto-assign public IP, and verify placement with `describe-instances` right after launch. |
