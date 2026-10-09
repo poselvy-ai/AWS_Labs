@@ -154,8 +154,8 @@ In the VPC recouse map you can see the 4 subnets, the 2 routes, connecting to th
 ### Steps 7: Flow Logs
 1. Turned on Flow logs in VPC
 2. Accepted IAM role *VPCFlowLogs-Cloudwatch-1774071984268*
-3. Went to **CloudWatch** and created log call *dbd-vpc-flowlogs*
-![Flow Logs Creation])(./screenshot/Flow_Loag_Status_active.png)
+3. Went to **CloudWatch** and created log call *dbd-vpc-flowlogs*.
+![Flow Logs Creation])(./screenshot/Flow_Log_Status_active.png)
 
 ## Verification
 Please navigate to [Verification](./CLI/verification-commands.md) Where I used the AWS CloudShell to verify my work.
