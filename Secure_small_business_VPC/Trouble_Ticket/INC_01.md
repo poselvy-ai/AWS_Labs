@@ -48,6 +48,8 @@ Details
 }
 ```
 While reviewing the log I noticed there was a missing route for *dbd-igw* to accept request from internet users. 
+**Route table rtb-0d8964850ad582d7f does not have an applicable route to igw-052d754ac97ca3b96. See documentation** 
+**"ExplanationCode": "NO_ROUTE_TO_DESTINATION",**
 
 3. I reviewed *dbd-public-rt* route table and noticed that 0.0.0.0/0 targeting *dbd-igw*
 4. Added missing route back to *dbd-public-rt*
