@@ -1,14 +1,14 @@
 # Public website down 
 ## Incident 01: 
 *Desert Bloom Dental office manager reports that their customers are not able to reach their website. Desert Bloom has also provided the flowing screenshot for validation of problem*
-![Website can't be reached](./screenshot/web-site-down.png)
+![Website can't be reached](./screenshot/website_down.png)
 
 ### Step 1: Conformation
 1. I confirmed the outage by going to *dbd-web* public IP 44.220.71.189, and was able to replicate the error. 
 2. Ran *reach ability analysis* under VPC and the test **FAILED**
-   ![Failed Test](./screenshot/reachability-ability-analyis-fail.png)
-   **LOG**"
-   ```bash
+   ![Failed Test](./screenshot/reachability_ability_analyis_fail.png)
+**LOG**"
+```bash
 Analysis explorer
 Source
 igw-052d754ac97ca3b96
@@ -52,7 +52,7 @@ While reviewing the log I noticed there was a missing route for *dbd-igw* to acc
 3. I reviewed *dbd-public-rt* route table and noticed that 0.0.0.0/0 targeting *dbd-igw*
 4. Added missing route back to *dbd-public-rt*
 5. Confirmed my solution by running *reach ability analysis* and going to the website
-![Passed Test](./screenshot/reachability-ability-analyis-pass.png)
+![Passed Test](./screenshot/reachability_ability_analyis_pass.png)
 ![Web Page](./screenshot/DBD_Web_Page_Active.png)
 
 Root Cause: route of last resort 0.0.0.0/0 targeting *dbd-igw* was missing from the *dbd-public-rt*.
