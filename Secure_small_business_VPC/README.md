@@ -80,6 +80,9 @@ EC2, Security Group, CloudWatch, NAT Gateway, Internet Gateway, Session Manager,
 ![subnets](./screenshot/Subnet_Creation.png)
 
 ### Step 3: Create Internet Gatway.
+>[!WARNING]
+>Once you add the **NAT Gateway & Elastic IP** into the build. You will start incurring cost.
+
 1. I created internet gatway *dbd-igw* and attached to VPC *dbd-vpc*. The internet gatway gives the VPC path to the internet and perfomrs 1:1 NAT for the instancewith public IP
 
 ### Step 4: Create the NAT Gatway
@@ -155,7 +158,7 @@ In the VPC recouse map you can see the 4 subnets, the 2 routes, connecting to th
 1. Turned on Flow logs in VPC
 2. Accepted IAM role *VPCFlowLogs-Cloudwatch-1774071984268*
 3. Went to **CloudWatch** and created log call *dbd-vpc-flowlogs*.
-![Flow Logs Creation])(./screenshot/Flow_Log_Status_active.png)
+![Flow Logs Creation](./screenshot/Flow_Log_Status_active.png)
 
 ## Verification
 Please navigate to [Verification](./CLI/verification-commands.md) Where I used the AWS CloudShell to verify my work.
