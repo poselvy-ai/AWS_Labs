@@ -170,7 +170,7 @@ Each incident reports a different trouble the client experienced and the steps I
 |INC #| Issue| Root Cause |
 |----|-----|----|
 |[01](./Trouble_Ticket/INC_01.md)| Unable to reach *Desert Bloom Dental* website| Default route missing to allow **dbd-web** to respond to internet request |
-|[02](./Trouble_Ticket/INC_02.md)| Website is unable to load date from internal app server|
+|[02](./Trouble_Ticket/INC_02.md)| Website is unable to load date from internal app server| The inbound rule allowing HTTP 80 from dbd-web-sg was missing from dbd-app-sg |
 
 ## Issues Encountered
 
