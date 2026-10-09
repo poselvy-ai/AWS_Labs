@@ -167,8 +167,6 @@ Please navigate to [Verification](./CLI/verification-commands.md) Where I used t
 
 ## Issues Encountered
 
-## Issues Encountered
-
 | # | Issue | Cause | Resolution |
 |---|---|---|---|
 | 1 | NAT Gateway entered `Failed` state with error `Gateway.NotAttached` | The Internet Gateway was not yet attached to dbd-vpc when the NAT Gateway was created. A public NAT Gateway checks for an attached IGW at creation time. | Attached dbd-igw to dbd-vpc and recreated the NAT Gateway. The failed NAT could not be deleted manually; AWS removes failed NAT Gateways automatically and does not bill for them. |
