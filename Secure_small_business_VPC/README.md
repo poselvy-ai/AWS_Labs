@@ -167,6 +167,19 @@ Please navigate to [Verification](./CLI/verification-commands.md) Where I used t
 
 ## Issues Encountered
 
+## Issues Encountered
+
+| # | Issue | Cause | Resolution |
+|---|---|---|---|
+| 1 | NAT Gateway entered `Failed` state with error `Gateway.NotAttached` | The Internet Gateway was not yet attached to dbd-vpc when the NAT Gateway was created. A public NAT Gateway checks for an attached IGW at creation time. | Attached dbd-igw to dbd-vpc and recreated the NAT Gateway. The failed NAT could not be deleted manually; AWS removes failed NAT Gateways automatically and does not bill for them. |
+| 2 | Private subnets were not using dbd-private-rt | The Resource map showed no subnets connected to dbd-private-rt; the private subnets had not been associated with it. | Associated dbd-private-a and dbd-private-b with dbd-private-rt and verified with `aws ec2 describe-route-tables`. |
+| 3 | dbd-public-b lost its internet route | While fixing issue 2, dbd-public-b was unintentionally moved off dbd-public-rt and fell back to the main route table (local route only). A subnet can belong to only one route table. | Found by checking `describe-route-tables` output; re-associated dbd-public-b with dbd-public-rt and re-verified all route tables. |
+| 4 | Nearly deleted a route table that looked unused | The table showed no subnet associations, but it was edge-associated with the NAT Gateway. The NAT was created in **regional** mode, which uses its own route table (0.0.0.0/0 → IGW). My CLI query only listed subnet associations, so the gateway association was hidden. | Kept the table, named it dbd-nat-rt, and updated the diagram and docs to show a regional NAT at the VPC level. |
+| 5 | "Connect" to dbd-web failed | The console defaulted to EC2 Instance Connect, which uses SSH on port 22. No SSH rule exists, by design. | Connected through the Session Manager tab instead (no inbound ports or key pairs needed). |
+| 6 | dbd-public-b created as 10.0.20.0/24 instead of the designed 10.0.2.0/24 | CIDR entry error during subnet creation. | Documented as an as-built difference. No functional impact. |
+| 7 | Flow log results showed traffic unrelated to the test | The Logs Insights default query returns all recent records, including outside connection attempts and SKIPDATA records. | Used a filtered query (`dstAddr` and `dstPort = 80`) to isolate web → app traffic. |
+| 8 | dbd-app launched in a public subnet with a public IP | The wrong subnet was selected in the EC2 launch wizard (dbd-public-b instead of dbd-private-a). Found when flow logs showed outside public IPs reaching 10.0.20.106; confirmed with `describe-instances` and `describe-subnets` (public IP 13.220.210.88). | dbd-app-sg rejected all outside traffic, so nothing was exposed. Documented rather than rebuilt to control cost. The private NAT egress path was **not** tested. Next build: launch private instances in a private subnet, disable auto-assign public IP, and verify placement right after launch. |
+
 ## Lessons Learned
 ### Subnetting AWS for VPCs 
 1. It's better to use a /24 on the public subnets as the your external resources sit their along with the NAT Gateways. Also, some of the AWS resources need a larger subnet as they scale up.
