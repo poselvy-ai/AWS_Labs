@@ -1,7 +1,7 @@
 # Public website down 
 ## Incident 01: 
 *Desert Bloom Dental office manager reports that their customers are not able to reach their website. Desert Bloom has also provided the flowing screenshot for validation of problem*
-![Website can't be reached](./Secure_small_business_VPC/screenshot/website_down.png)
+![Website can't be reached](../screenshot/website_down.png)
 
 ### Step 1: Conformation
 1. I confirmed the outage by going to *dbd-web* public IP 44.220.71.189, and was able to replicate the error. 
