@@ -59,10 +59,110 @@ EC2, Security Group, CloudWatch, NAT Gateway, Internet Gateway, Session Manager,
 
 ## Implementation
 
+### Step 1: Create VPC
+1. Signed in through IAM Identy center access portal with the Administrator Access role, that ties back into *Lab 01*
+2. I verified I was in **Reagion 1 (us-east-1) N. Virginia**. The step ensured I was building my VPC in the correct region for the customer 
+3. I createdd my VPC dbd-vpc (10.0.0.0/16), by going to VPC --> Your VPCs --> Create VPC and inputing the following 
+	- Name tag: dbd-vpc
+	- IPv4 CIDR: 10.0.0.0/16
+![dbd-vpc](./screenshot/VPC_Creation_us-east-1a.png)
+
+### Step 2: Create Subnet
+1. After the VPC was crateed I created the following subnets, by going to **VPC->Subnet->Create-Subnet->**. The subnets divided the VPC address accross tow availabit zones. Public subnets have auto-assinged IPv4 enabled
+
+| Subnet | CIDR | AZ | Type | Route table | Resources |
+|---|---|---|---|---|---|
+| dbd-public-a | 10.0.1.0/24 | us-east-1a | Public | dbd-public-rt | 
+| dbd-public-b | 10.0.20.0/24 | us-east-1b | Public | dbd-public-rt | 
+| dbd-private-a | 10.0.11.0/24 | us-east-1a | Private | dbd-private-rt |
+| dbd-private-b | 10.0.12.0/24 | us-east-1b | Private | dbd-private-rt |
+
+![subnets](./screenshot/Subnet_Creation.png)
+
+### Step 3: Create Internet Gatway.
+1. I created internet gatway *dbd-igw* and attached to VPC *dbd-vpc*. The internet gatway gives the VPC path to the internet and perfomrs 1:1 NAT for the instancewith public IP
+
+### Step 4: Create the NAT Gatway
+1. I created the NAT gate way by going to **VPC->NAT gatway->Create Gatway**. 
+2. The NAT Gateway was configured the following
+	- Name: dbd-nat
+	- Subnet: dbd-public-a
+	- Connectivity: Public
+	- Availbility Mode: Regional
+	- **Aloacted Elastic IP** 
+![NAT Gateway](./screenshot/dbd-nat-gtwy.png)
+
+### Step 5: Route Table
+I created tow routes to assist the instance with traffic flow. 
+1. **dbd-public-rt**
+	- Added 0.0.0.0/0 and target *dbd-igw* as route of last resourt
+	- Added Subnet associotion for ***dbd-public-a & dbd-public-b*** wich allows the correct traffic flow on the subnet.
+![dbd-public-rt](./screenshot/dbd-pb-rt.png)
+
+2. **dbd-private-rt**
+	- Added 0.0.0.0/0 and targeretd *dbd-nat* as route of last resort. Sends private subnet internet traffic to the NAT Gateway, which translates the instances' private IPs to its own public IP. Outbound only.
+	- Subnet association **dbd-private-a & dbd-private-b**
+![dbd-private-rt](./screenshot/dbd-prvt-rt.png)
+
+3. AWS Created **dbd-nat-rt** edge associated
+	- Route 0.0.0.0/0
+	- Association dbd-nat
+
+
+### Verification 
+
+In the VPC recouse map you can see the 4 subnets, the 2 routes, connecting to the nat and igw as I describe trhoug step 1 - 5.
+
+![Resource Map](./screenshot/vpc_resource_map.png)
+
+### Step 6 IAM (roles & access) & compute.
+1. First I build out the IAM role **dbd-ecs-ssm-role** and attched the trutsted entity EC2 *AmazonSSMManagedInstanceCore* policy. The role allowed the System Manger to connect to each isntance with out havint to be SSH into. 
+2. Created Secuurity Group **dbd-web-sg** that allowed inbound web access using port 80 from 0.0.0.0/0
+3. Createtd Security Group **dbd-app-sg** that allowed inboud traffic only from web tier as I target *dbd-web-sg*
+![Security Groups](./screenshot/EC2_Security_Groups.png)
+4. I created the following Instances 
+	- **dbd-web**
+	- AMI: Amazon Linux 2023
+	- Instance Type: t3.micro
+	- VPC: dbd-vpc
+	- Subnet: dbd-public-a
+	- Auto-assign publci IP: Enabled
+	- Advanced Details -> IAM: *dbd-ecs-ssm-role*
+	```bash
+	#!/bin/bash
+	dnf install -y httpd
+	echo "<h1>Desert Bloom Dental - Public Website</h1>" > /var/www/html/index.html
+	systemctl enable --now httpd
+	```
+	- **dbd-app**
+	- AMI: Amazon Linux 2023
+	- Instance Type: t3.micro
+	- Subnet: dbd-private-a*
+	- Auto-assign publci IP: Disabled
+	```bash
+	#!/bin/bash
+	dnf install -y httpd
+	echo "<h1>Desert Bloom Dental - Internal App Server</h1>" > /var/www/html/index.html
+	systemctl enable --now httpd
+	```
+- **dbd-app**
+  - AMI: Amazon Linux 2023 · Instance type: t3.micro
+  - VPC: dbd-vpc · Security group: dbd-app-sg · IAM role: dbd-ec2-ssm-role · Key pair: none
+  - Intended: dbd-private-a, auto-assign public IP disabled
+  - **As built:** dbd-public-b (10.0.20.106) with public IP 13.220.210.88. See [Issues Encountered](./CLI/issues-encountered.md).
+  
+### Steps 7: Flow Logs
+1. Turned on Flow logs in VPC
+2. Accepted IAM role *VPCFlowLogs-Cloudwatch-1774071984268*
+3. Went to **CloudWatch** and created log call *dbd-vpc-flowlogs*
+![Flow Logs Creation])(./screenshot/Flow_Loag_Status_active.png)
+
 ## Verification
 Please navigate to [Verification](./CLI/verification-commands.md) Where I used the AWS CloudShell to verify my work.
 
 ## Trouble Ticket Scenario 
+
+## Issues Encountered
 
 ## Lessons Learned
 ### Subnetting AWS for VPCs 
