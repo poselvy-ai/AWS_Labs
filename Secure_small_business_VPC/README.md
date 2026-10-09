@@ -167,9 +167,9 @@ Please navigate to [Verification](./CLI/verification-commands.md) Where I used t
 
 Each incident reports a different trouble the client experienced and the steps I took resolve it. 
 
-|INC #| Issue|
-|----|-----|
-|[01](./Trouble_Ticket/INC_01.md)| Unable to reach *Desert Bloom Dental* website|
+|INC #| Issue| Root Cause |
+|----|-----|----|
+|[01](./Trouble_Ticket/INC_01.md)| Unable to reach *Desert Bloom Dental* website| Default route missing to allow **dbd-web** to respond to internet request |
 |[02](./Trouble_Ticket/INC_02.md)| Website is unable to load date from internal app server|
 
 ## Issues Encountered
